@@ -1,3 +1,5 @@
+require('./config/config')
+
 const express = require('express');
 const _ = require('lodash'); // for the update purpose
 const bodyParser = require('body-parser');
@@ -8,7 +10,8 @@ var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
 
 var app = express();
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 
 app.use(bodyParser.json()); // middleware takes the json data and attaches to the request
@@ -69,7 +72,7 @@ app.delete('/todos/:id', (req,res)=>{
   });
 });
 
-app.patch('/todos/:id', (req,res)=>{ 
+app.patch('/todos/:id', (req,res)=>{
   var id = req.params.id;
   var body = _.pick(req.body, ['text','completed']);
   if(!ObjectID.isValid(id)){
