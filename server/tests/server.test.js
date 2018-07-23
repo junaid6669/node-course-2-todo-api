@@ -181,6 +181,6 @@ describe('PATCH /todos/:id', ()=>{
       //expect(typeof res.body.todo.completedAt).toBeA('number');
     })
     .end(done)
-  });
+  }); 
 
 });
